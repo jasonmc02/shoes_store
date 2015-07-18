@@ -1,0 +1,357 @@
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateArticles (20150718193146)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "price" float, "total_in_shelf" integer, "total_in_vault" integer, "store_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150718193146"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateStores (20150718193207)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "stores" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150718193207"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2015-07-18 13:33:22 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/railties-4.2.0/lib/rails/templates/rails/welcome/index.html.erb (2.1ms)
+Completed 200 OK in 27ms (Views: 11.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-07-18 13:34:03 -0600
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.4ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 1926ms (Views: 1923.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 13:34:05 -0600
+
+
+Started GET "/assets/scaffolds.self-4865df2d40ca003666dcd8c0b637b1e02da906c425537600a04301451a130df6.css?body=1" for ::1 at 2015-07-18 13:34:05 -0600
+
+
+Started GET "/assets/stores.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 13:34:06 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 13:34:06 -0600
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 13:34:06 -0600
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 13:34:06 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-07-18 13:34:06 -0600
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 13:34:06 -0600
+
+
+Started GET "/assets/stores.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 13:34:06 -0600
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-07-18 13:34:06 -0600
+
+
+Started GET "/articles/new" for ::1 at 2015-07-18 13:34:08 -0600
+Processing by ArticlesController#new as HTML
+  Rendered articles/_form.html.erb (23.3ms)
+  Rendered articles/new.html.erb within layouts/application (28.5ms)
+Completed 200 OK in 74ms (Views: 67.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/articles/new" for ::1 at 2015-07-18 13:42:36 -0600
+Processing by ArticlesController#new as HTML
+Completed 500 Internal Server Error in 8ms
+
+NameError (uninitialized constant ArticlesController::Stores):
+  app/controllers/articles_controller.rb:18:in `new'
+
+
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (31.3ms)
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (22.5ms)
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/newadmin/.rvm/gems/ruby-2.1.3/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (42.3ms)
+
+
+Started GET "/articles/new" for ::1 at 2015-07-18 13:42:44 -0600
+Processing by ArticlesController#new as HTML
+  Rendered articles/_form.html.erb (5.1ms)
+  Rendered articles/new.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 69ms (Views: 58.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 13:42:44 -0600
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 13:42:44 -0600
+
+
+Started GET "/assets/scaffolds.self-4865df2d40ca003666dcd8c0b637b1e02da906c425537600a04301451a130df6.css?body=1" for ::1 at 2015-07-18 13:42:44 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-07-18 13:42:44 -0600
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 13:42:44 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 13:42:44 -0600
+
+
+Started GET "/assets/stores.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 13:42:45 -0600
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 13:42:45 -0600
+
+
+Started GET "/assets/stores.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 13:42:45 -0600
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-07-18 13:42:45 -0600
+
+
+Started GET "/articles/new" for ::1 at 2015-07-18 13:45:01 -0600
+Processing by ArticlesController#new as HTML
+  [1m[36mStore Load (0.2ms)[0m  [1mSELECT "stores".* FROM "stores"[0m
+  Rendered articles/_form.html.erb (8.1ms)
+  Rendered articles/new.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 47ms (Views: 46.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/scaffolds.self-4865df2d40ca003666dcd8c0b637b1e02da906c425537600a04301451a130df6.css?body=1" for ::1 at 2015-07-18 13:45:01 -0600
+
+
+Started GET "/assets/stores.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 13:45:01 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 13:45:01 -0600
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 13:45:01 -0600
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 13:45:01 -0600
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 13:45:01 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-07-18 13:45:01 -0600
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 13:45:01 -0600
+
+
+Started GET "/assets/stores.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 13:45:01 -0600
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-07-18 13:45:01 -0600
+
+
+Started GET "/stores" for ::1 at 2015-07-18 13:45:08 -0600
+Processing by StoresController#index as HTML
+  [1m[35mStore Load (0.2ms)[0m  SELECT "stores".* FROM "stores"
+  Rendered stores/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 45ms (Views: 43.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/stores/new" for ::1 at 2015-07-18 13:45:09 -0600
+Processing by StoresController#new as HTML
+  Rendered stores/_form.html.erb (2.4ms)
+  Rendered stores/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 49ms (Views: 43.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/stores" for ::1 at 2015-07-18 13:45:21 -0600
+Processing by StoresController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KCzxZRepr84lyjT2mo0NhzXtrz63jdBIMfbGTagiiDLYmr6/GhSv1uF3Lk9QLdPBWcqcsvlm5c9qlWo5iOFD6Q==", "store"=>{"name"=>"center", "address"=>"downtown"}, "commit"=>"Create Store"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "stores" ("name", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "center"], ["address", "downtown"], ["created_at", "2015-07-18 19:45:21.394561"], ["updated_at", "2015-07-18 19:45:21.394561"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/stores/1
+Completed 302 Found in 8ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/stores/1" for ::1 at 2015-07-18 13:45:21 -0600
+Processing by StoresController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mStore Load (0.2ms)[0m  SELECT  "stores".* FROM "stores" WHERE "stores"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered stores/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 46ms (Views: 38.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/stores" for ::1 at 2015-07-18 13:45:23 -0600
+Processing by StoresController#index as HTML
+  [1m[36mStore Load (0.2ms)[0m  [1mSELECT "stores".* FROM "stores"[0m
+  Rendered stores/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 40ms (Views: 39.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/stores/new" for ::1 at 2015-07-18 13:45:23 -0600
+Processing by StoresController#new as HTML
+  Rendered stores/_form.html.erb (1.8ms)
+  Rendered stores/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 45ms (Views: 44.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/stores" for ::1 at 2015-07-18 13:45:32 -0600
+Processing by StoresController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"na6y5HQAW8gfchT8ydZqsJYSmh228NuPNQlSU/3zwBptGP0+eb1b0NvPDkUDdrT2+jWpkfgb7ghuav4n3TALwQ==", "store"=>{"name"=>"mall", "address"=>"east mall"}, "commit"=>"Create Store"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "stores" ("name", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "mall"], ["address", "east mall"], ["created_at", "2015-07-18 19:45:32.148921"], ["updated_at", "2015-07-18 19:45:32.148921"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/stores/2
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/stores/2" for ::1 at 2015-07-18 13:45:32 -0600
+Processing by StoresController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStore Load (0.1ms)[0m  [1mSELECT  "stores".* FROM "stores" WHERE "stores"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered stores/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 44ms (Views: 43.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/stores" for ::1 at 2015-07-18 13:45:34 -0600
+Processing by StoresController#index as HTML
+  [1m[35mStore Load (0.2ms)[0m  SELECT "stores".* FROM "stores"
+  Rendered stores/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 37ms (Views: 36.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/stores/new" for ::1 at 2015-07-18 13:45:35 -0600
+Processing by StoresController#new as HTML
+  Rendered stores/_form.html.erb (1.4ms)
+  Rendered stores/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 46ms (Views: 44.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/stores" for ::1 at 2015-07-18 13:45:49 -0600
+Processing by StoresController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Qj25D8D+gCUxS2LHL4oSd9H9Z7vaIUC7Xsklhbk8J+qyi/bVzUOAPfX2eH7lKswxvdpUN5TKdTwFqonxmf/sMQ==", "store"=>{"name"=>"coast", "address"=>"west coast"}, "commit"=>"Create Store"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "stores" ("name", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "coast"], ["address", "west coast"], ["created_at", "2015-07-18 19:45:49.802721"], ["updated_at", "2015-07-18 19:45:49.802721"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/stores/3
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/stores/3" for ::1 at 2015-07-18 13:45:49 -0600
+Processing by StoresController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mStore Load (0.2ms)[0m  SELECT  "stores".* FROM "stores" WHERE "stores"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered stores/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 46ms (Views: 44.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/stores" for ::1 at 2015-07-18 13:45:51 -0600
+Processing by StoresController#index as HTML
+  [1m[36mStore Load (0.1ms)[0m  [1mSELECT "stores".* FROM "stores"[0m
+  Rendered stores/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 39ms (Views: 37.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/articles" for ::1 at 2015-07-18 13:45:55 -0600
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.2ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 40ms (Views: 39.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/articles/new" for ::1 at 2015-07-18 13:45:57 -0600
+Processing by ArticlesController#new as HTML
+  [1m[36mStore Load (0.4ms)[0m  [1mSELECT "stores".* FROM "stores"[0m
+  Rendered articles/_form.html.erb (7.2ms)
+  Rendered articles/new.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 43ms (Views: 41.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/articles/new" for ::1 at 2015-07-18 13:46:20 -0600
+Processing by ArticlesController#new as HTML
+  [1m[35mStore Load (0.2ms)[0m  SELECT "stores".* FROM "stores"
+  Rendered articles/_form.html.erb (5.9ms)
+  Rendered articles/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 53ms (Views: 51.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 13:46:20 -0600
+
+
+Started GET "/assets/scaffolds.self-4865df2d40ca003666dcd8c0b637b1e02da906c425537600a04301451a130df6.css?body=1" for ::1 at 2015-07-18 13:46:20 -0600
+
+
+Started GET "/assets/stores.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 13:46:20 -0600
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 13:46:20 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 13:46:20 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-07-18 13:46:20 -0600
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 13:46:20 -0600
+
+
+Started GET "/assets/stores.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 13:46:20 -0600
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 13:46:20 -0600
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-07-18 13:46:20 -0600
+
+
+Started GET "/articles/new" for ::1 at 2015-07-18 13:46:48 -0600
+Processing by ArticlesController#new as HTML
+  [1m[36mStore Load (0.2ms)[0m  [1mSELECT "stores".* FROM "stores"[0m
+  Rendered articles/_form.html.erb (4.3ms)
+  Rendered articles/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 39ms (Views: 38.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/scaffolds.self-4865df2d40ca003666dcd8c0b637b1e02da906c425537600a04301451a130df6.css?body=1" for ::1 at 2015-07-18 13:46:48 -0600
+
+
+Started GET "/assets/stores.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 13:46:48 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 13:46:48 -0600
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 13:46:48 -0600
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 13:46:48 -0600
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 13:46:48 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-07-18 13:46:48 -0600
+
+
+Started GET "/assets/stores.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 13:46:48 -0600
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 13:46:48 -0600
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-07-18 13:46:48 -0600
