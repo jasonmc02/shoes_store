@@ -1,5 +1,8 @@
 class StoresController < ApplicationController
-  before_action :set_store, only: [:show, :edit, :update, :destroy]
+  before_action :validate_session, only: [:services_filter]
+  before_action :validate_id, only: [:services_filter]
+  before_action :validate_store, only: [:services_filter]
+  before_action :set_store, only: [:show, :edit, :update, :destroy, :get_articles]
 
   # GET /stores
   # GET /stores.json
@@ -61,7 +64,28 @@ class StoresController < ApplicationController
     end
   end
 
+  def services_filter
+    if params.has_key?(:id)
+      return get_articles
+    end
+    @stores = Store.all
+    render :action => "index"
+  end
+
+  def get_articles
+    set_store
+    @articles = @store.articles.includes(:store)
+    render "articles/index"
+  end
+
   private
+    def validate_id
+      return render :json => { :error_msg => "Bad Request", :success => false }, :status => 400 unless params[:id].blank? || /\A[-+]?[0-9]*\.?[0-9]+\Z/.match(params[:id].to_s)
+    end
+
+    def validate_store
+      return render :json => { :error_msg => "Record not Found", :success => false }, :status => 404 unless params[:id].blank? || Store.exists?(params[:id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_store
       @store = Store.find(params[:id])

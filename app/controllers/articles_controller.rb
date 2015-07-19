@@ -1,10 +1,11 @@
 class ArticlesController < ApplicationController
+  before_action :validate_session, only: [:services_filter]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.includes(:store).all
   end
 
   # GET /articles/1
@@ -20,6 +21,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    @stores = Store.all
   end
 
   # POST /articles
@@ -62,6 +64,11 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def services_filter
+    @articles = Article.includes(:store).all
+    render :action => "index"
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
